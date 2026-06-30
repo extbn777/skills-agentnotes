@@ -1,10 +1,7 @@
 ---
 name: devcontainers
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Set up local development environments with production parity for DigitalOcean App Platform. Use when setting up local dev, adding devcontainer to a project, running App Platform apps locally, or configuring backing services (Postgres, Redis, Kafka, S3).
-related_skills: [designer, postgres, managed-db-services]
-deprecated: false
 ---
 
 # Dev Containers Skill
@@ -230,20 +227,23 @@ SPACES_FORCE_PATH_STYLE=true
 ## Limitations
 
 This skill does **not** handle:
-- Cloud deployment → use **deployment** skill
-- Production app specs → use **designer** skill
+- Cloud deployment → use **[deployment skill](../deployment/SKILL.md)**
+- Production app specs → use **[designer skill](../designer/SKILL.md)**
 - Database migrations → bring your own migration tool
 - DigitalOcean Functions → not containerizable
 - SSL/TLS → local uses HTTP; production handles SSL automatically
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ designer**: Design production app spec after local testing
-- **→ deployment**: Set up GitHub Actions CI/CD
-- **→ postgres**: Configure managed database permissions
-- **→ troubleshooting**: Debug production issues
+After setting up the local environment, load the skill that matches your next step:
+
+- **[designer](../designer/SKILL.md)** — Para diseñar el app spec de producción después de probar localmente
+- **[deployment](../deployment/SKILL.md)** — Para configurar GitHub Actions CI/CD una vez validado localmente
+- **[postgres](../postgres/SKILL.md)** — Para configurar permisos del managed database en producción
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para depurar problemas en producción comparando con el entorno local
+- **[managed-db-services](../managed-db-services/SKILL.md)** — Para configurar MySQL, Valkey, Kafka u OpenSearch en producción
 
 ---
 
