@@ -1,10 +1,7 @@
 ---
 name: managed-db-services
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Configure DigitalOcean Managed MySQL, MongoDB, Valkey, Kafka, and OpenSearch for App Platform. Use when setting up non-PostgreSQL databases, configuring trusted sources, or troubleshooting database connectivity.
-related_skills: [designer, networking]
-deprecated: false
 ---
 
 # Managed Database Services Skill
@@ -23,7 +20,7 @@ Which database engine?
 └── OpenSearch    → See reference/opensearch.md
 ```
 
-> **Tip**: For complex multi-step deployments, use the **planner** skill. For an overview of all skills, see [root SKILL.md](../../SKILL.md).
+> **Tip**: For complex multi-step deployments, use the **[planner skill](../planner/SKILL.md)**. For an overview of all skills, see [root SKILL.md](../../SKILL.md).
 
 ---
 
@@ -306,7 +303,7 @@ doctl databases firewalls list <cluster-id>
 
 ## When to Use Postgres Skill Instead
 
-Use the **postgres skill** for:
+Use the **[postgres skill](../postgres/SKILL.md)** for:
 - Schema isolation (multi-tenant)
 - Complex permission management
 - Multiple apps sharing one cluster
@@ -316,14 +313,13 @@ This skill is for straightforward single-database setups with MySQL, MongoDB, Va
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-| Skill | Integration |
-|-------|-------------|
-| **designer** | Generates `databases:` block in app spec |
-| **deployment** | No additional secrets needed — bindable vars handle credentials |
-| **networking** | VPC + trusted sources configuration |
-| **troubleshooting** | Debug container for connectivity testing |
+- **[designer](../designer/SKILL.md)** — Genera el bloque `databases:` en el app spec
+- **[deployment](../deployment/SKILL.md)** — No se necesitan secrets adicionales; las bindable vars manejan las credenciales
+- **[networking](../networking/SKILL.md)** — Configuración de VPC y trusted sources para acceso seguro
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Debug container para pruebas de conectividad
+- **[postgres](../postgres/SKILL.md)** — Para PostgreSQL con schema isolation, multi-tenant o configuración avanzada
 
 ---
 
