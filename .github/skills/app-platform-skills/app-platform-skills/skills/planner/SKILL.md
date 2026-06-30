@@ -1,10 +1,7 @@
 ---
 name: planner
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Generate staged project plans from design through deployment. Use when planning App Platform projects, breaking complex deployments into resumable stages, or tracking multi-step infrastructure setup.
-related_skills: [designer, deployment, postgres, networking]
-deprecated: false
 ---
 
 # Planner Skill
@@ -235,9 +232,13 @@ Proceed to Stage N+1
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **← designer**: Uses `.do/app.yaml` for complexity detection if exists
-- **→ deployment**: Plan/ files provide context; Stage 7 creates GitHub Actions workflow
-- **→ troubleshooting**: Plan/ stages help identify where failure occurred
-- **→ devcontainers**: Local development setup for testing
+Load the skill that matches what you need at each phase of the plan:
+
+- **[designer](../designer/SKILL.md)** — Para generar el `.do/app.yaml` que este skill usa para detectar complejidad
+- **[deployment](../deployment/SKILL.md)** — Los archivos Plan/ proveen contexto; el Stage 7 crea el workflow de GitHub Actions
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Los stages del plan ayudan a identificar dónde ocurrió el fallo
+- **[devcontainers](../devcontainers/SKILL.md)** — Setup del entorno local para las etapas de desarrollo y prueba
+- **[postgres](../postgres/SKILL.md)** — Configuración de base de datos en los stages de infraestructura cloud
+- **[managed-db-services](../managed-db-services/SKILL.md)** — Para Tier 3 con Kafka, OpenSearch u otros servicios gestionados
