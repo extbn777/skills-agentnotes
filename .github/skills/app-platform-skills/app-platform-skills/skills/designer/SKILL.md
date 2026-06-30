@@ -1,5 +1,5 @@
 ---
-name: app-platform-designer
+name: designer
 version: 1.0.0
 description: Transform natural language application descriptions into production-ready DigitalOcean App Platform specifications. Use when designing apps, creating app specs, generating deploy.template.yaml, or architecting multi-component applications.
 ---
