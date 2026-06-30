@@ -1,10 +1,7 @@
 ---
 name: app-platform-sandbox
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Create and manage isolated container sandboxes for AI agent code execution. Use when you need ephemeral environments to run untrusted code, execute agent workflows, or test in isolation. NOT for debugging existing apps (use troubleshooting skill).
-related_skills: [troubleshooting]
-deprecated: false
 ---
 
 # Sandbox Skill
@@ -24,9 +21,9 @@ install packages, run code, check results, modify, repeat.
 ## Quick Decision
 
 ```
-┌─────────────────────────────────────────────────────────────┐
+┌───────────────────────────────────────────────────────────────┐
 │         Need isolated execution environment?                 │
-└─────────────────────────────────────────────────────────────┘
+└───────────────────────────────────────────────────────────────┘
                             │
               Is this for debugging an EXISTING app?
                             │
@@ -230,10 +227,8 @@ Hot Pool trade-off:
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-| Direction | Skill | When |
-|-----------|-------|------|
-| **→** | troubleshooting | Debug an existing sandbox (use `Sandbox.get_from_id()`) |
-| **→** | designer | Include sandbox-compatible worker in app spec |
-| **←** | deployment | Sandboxes are standalone, not part of main app deployment |
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para depurar un sandbox existente usando `Sandbox.get_from_id()`
+- **[designer](../designer/SKILL.md)** — Para incluir un worker compatible con sandbox en el app spec
+- **[deployment](../deployment/SKILL.md)** — Los sandboxes son independientes, no forman parte del deployment principal
