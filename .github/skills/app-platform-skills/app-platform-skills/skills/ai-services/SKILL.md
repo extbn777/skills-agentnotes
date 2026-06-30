@@ -1,17 +1,14 @@
 ---
 name: ai-services
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Configure DigitalOcean Gradient AI serverless inference and Agent Development Kit. Use when adding LLM inference, model access keys, serverless AI endpoints, or building AI agents with ADK on App Platform.
-related_skills: [designer, deployment]
-deprecated: false
 ---
 
 # AI Services Skill
 
 Configure DigitalOcean Gradient AI Platform for App Platform applications.
 
-> **Tip**: This is one specialized skill in the App Platform library. For complex multi-step projects, consider using the **planner** skill to generate a staged approach. For an overview of all available skills, see the [root SKILL.md](../../SKILL.md).
+> **Tip**: This is one specialized skill in the App Platform library. For complex multi-step projects, consider using the **[planner skill](../planner/SKILL.md)** to generate a staged approach. For an overview of all available skills, see the [root SKILL.md](../../SKILL.md).
 
 ---
 
@@ -156,12 +153,12 @@ Check [Gradient AI Models](https://docs.digitalocean.com/products/gradient-ai-pl
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ designer**: Add AI service environment variables to app spec
-- **→ deployment**: Model access key stored in GitHub Secrets
-- **→ devcontainers**: Test AI integrations locally before deployment
-- **→ planner**: Plan AI-enabled app deployments
+- **[designer](../designer/SKILL.md)** — Agrega las env vars del AI service al app spec
+- **[deployment](../deployment/SKILL.md)** — El model access key se guarda en GitHub Secrets
+- **[devcontainers](../devcontainers/SKILL.md)** — Para probar integraciones AI localmente antes del deployment
+- **[planner](../planner/SKILL.md)** — Para planificar el deployment de apps habilitadas con AI en etapas
 
 ---
 
