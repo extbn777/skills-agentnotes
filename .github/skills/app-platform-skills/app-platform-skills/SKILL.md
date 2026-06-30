@@ -1,10 +1,7 @@
 ---
 name: app-platform-skills
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Routes DigitalOcean App Platform tasks to specialized sub-skills. Use when working with App Platform deployments, migrations, database configuration, networking, or troubleshooting.
-related_skills: [designer, deployment, migration, postgres, managed-db-services, networking, spaces, ai-services, troubleshooting, devcontainers, sandbox, planner]
-deprecated: false
 ---
 
 # App Platform Skills — Router
@@ -19,43 +16,60 @@ This skill routes DigitalOcean App Platform tasks to specialized sub-skills. Eac
 
 **Trust the AI**: The AI assistant should reason about the full workflow, chain skills together when needed, and adapt based on context (greenfield vs brownfield vs troubleshooting). Skills provide domain knowledge, not rigid scripts to follow blindly.
 
+## Related Skills
+
+Load the specific skill that matches your task. Each link points to the full skill file:
+
+- **[devcontainers](skills/devcontainers/SKILL.md)** — Local development environment with production parity
+- **[designer](skills/designer/SKILL.md)** — Natural language → production-ready App Spec YAML
+- **[migration](skills/migration/SKILL.md)** — Convert existing apps (Heroku, AWS, Render, Railway, Fly.io) to App Platform
+- **[planner](skills/planner/SKILL.md)** — Generate staged project plans from design to deployment
+- **[deployment](skills/deployment/SKILL.md)** — Ship code to production via GitHub Actions
+- **[troubleshooting](skills/troubleshooting/SKILL.md)** — Debug running apps with pre-built debug container and log analysis
+- **[sandbox](skills/sandbox/SKILL.md)** — Isolated containers for AI agent code execution and testing
+- **[postgres](skills/postgres/SKILL.md)** — Full PostgreSQL setup: schemas, users, permissions, multi-tenant
+- **[managed-db-services](skills/managed-db-services/SKILL.md)** — MySQL, MongoDB, Valkey, Kafka, OpenSearch configuration
+- **[spaces](skills/spaces/SKILL.md)** — S3-compatible object storage configuration
+- **[networking](skills/networking/SKILL.md)** — Domains, routing, CORS, VPC networking, static IPs
+- **[ai-services](skills/ai-services/SKILL.md)** — Gradient AI inference endpoints and agent workflows
+
 ## Available Skills
 
 ### Development Phase
 
 | Skill | Purpose | Key Artifacts |
 |-------|---------|---------------|
-| **devcontainers** | Local development environment with prod parity | `.devcontainer/`, `docker-compose.dev.yml` |
+| **[devcontainers](skills/devcontainers/SKILL.md)** | Local development environment with prod parity | `.devcontainer/`, `docker-compose.dev.yml` |
 
 ### Architecture Phase
 
 | Skill | Purpose | Key Artifacts |
 |-------|---------|---------------|
-| **designer** | Natural language → production-ready App Spec | `.do/app.yaml` |
-| **migration** | Convert existing apps (Heroku, AWS, etc.) to App Platform. Deep Heroku chapter with Procfile/app.json/heroku.yml parsing, add-on mapping, pipeline migration | `.do/app.yaml`, migration checklist |
-| **planner** | Generate staged project plans from design to deployment | `Plan/*.md` stage files |
+| **[designer](skills/designer/SKILL.md)** | Natural language → production-ready App Spec | `.do/app.yaml` |
+| **[migration](skills/migration/SKILL.md)** | Convert existing apps (Heroku, AWS, etc.) to App Platform. Deep Heroku chapter with Procfile/app.json/heroku.yml parsing, add-on mapping, pipeline migration | `.do/app.yaml`, migration checklist |
+| **[planner](skills/planner/SKILL.md)** | Generate staged project plans from design to deployment | `Plan/*.md` stage files |
 
 ### Operations Phase
 
 | Skill | Purpose | Key Artifacts |
 |-------|---------|---------------|
-| **deployment** | Ship code to production via GitHub Actions | `.github/workflows/deploy.yml` |
-| **troubleshooting** | Debug running apps with pre-built debug container, analyze logs | Fixes, diagnostic reports |
-| **sandbox** | Isolated containers for AI agent code execution, testing | Ephemeral sandboxes |
+| **[deployment](skills/deployment/SKILL.md)** | Ship code to production via GitHub Actions | `.github/workflows/deploy.yml` |
+| **[troubleshooting](skills/troubleshooting/SKILL.md)** | Debug running apps with pre-built debug container, analyze logs | Fixes, diagnostic reports |
+| **[sandbox](skills/sandbox/SKILL.md)** | Isolated containers for AI agent code execution, testing | Ephemeral sandboxes |
 
 ### Data Services
 
 | Skill | Purpose | Key Artifacts |
 |-------|---------|---------------|
-| **postgres** | Full PostgreSQL setup: schemas, users, permissions, multi-tenant | SQL scripts (user-executed) |
-| **managed-db-services** | MySQL, MongoDB, Valkey, Kafka, OpenSearch (bindable vars) | App spec snippets |
-| **spaces** | S3-compatible object storage configuration | CORS config, app spec snippets |
+| **[postgres](skills/postgres/SKILL.md)** | Full PostgreSQL setup: schemas, users, permissions, multi-tenant | SQL scripts (user-executed) |
+| **[managed-db-services](skills/managed-db-services/SKILL.md)** | MySQL, MongoDB, Valkey, Kafka, OpenSearch (bindable vars) | App spec snippets |
+| **[spaces](skills/spaces/SKILL.md)** | S3-compatible object storage configuration | CORS config, app spec snippets |
 
 ### AI Services
 
 | Skill | Purpose | Key Artifacts |
 |-------|---------|---------------|
-| **ai-services** | Gradient AI inference endpoints | App spec snippets |
+| **[ai-services](skills/ai-services/SKILL.md)** | Gradient AI inference endpoints | App spec snippets |
 
 ---
 
@@ -72,8 +86,8 @@ uv pip install do-app-sandbox  # or: pip install do-app-sandbox
 
 | Use Case | SDK Method | Skill |
 |----------|------------|-------|
-| Debug EXISTING app | `Sandbox.get_from_id(app_id, component)` | **troubleshooting** |
-| Create NEW sandbox | `Sandbox.create()`, `SandboxManager` | **sandbox** |
+| Debug EXISTING app | `Sandbox.get_from_id(app_id, component)` | **[troubleshooting](skills/troubleshooting/SKILL.md)** |
+| Create NEW sandbox | `Sandbox.create()`, `SandboxManager` | **[sandbox](skills/sandbox/SKILL.md)** |
 
 ```python
 # Debug existing app (troubleshooting skill)
@@ -186,13 +200,13 @@ sandbox = Sandbox.create(image="python")
 
 | Request Type | Workflow | Skills Chain |
 |--------------|----------|--------------|
-| **Full Greenfield** | "Build a new app from scratch" | devcontainers → designer → planner → deployment |
-| **Migration** | "Migrate from Heroku/AWS" | migration → (then full greenfield workflow) |
-| **Brownfield** | "Deploy my existing app" | planner → deployment |
-| **Enhancement** | "Add Kafka to my app" | managed-db-services → update app.yaml → deployment |
-| **Troubleshooting** | "My app is broken" | troubleshooting (standalone) |
-| **AI Agent Execution** | "Run code in isolation" | sandbox (standalone) |
-| **Specific Task** | "Set up PostgreSQL" | postgres (standalone) |
+| **Full Greenfield** | "Build a new app from scratch" | [devcontainers](skills/devcontainers/SKILL.md) → [designer](skills/designer/SKILL.md) → [planner](skills/planner/SKILL.md) → [deployment](skills/deployment/SKILL.md) |
+| **Migration** | "Migrate from Heroku/AWS" | [migration](skills/migration/SKILL.md) → (then full greenfield workflow) |
+| **Brownfield** | "Deploy my existing app" | [planner](skills/planner/SKILL.md) → [deployment](skills/deployment/SKILL.md) |
+| **Enhancement** | "Add Kafka to my app" | [managed-db-services](skills/managed-db-services/SKILL.md) → update app.yaml → [deployment](skills/deployment/SKILL.md) |
+| **Troubleshooting** | "My app is broken" | [troubleshooting](skills/troubleshooting/SKILL.md) (standalone) |
+| **AI Agent Execution** | "Run code in isolation" | [sandbox](skills/sandbox/SKILL.md) (standalone) |
+| **Specific Task** | "Set up PostgreSQL" | [postgres](skills/postgres/SKILL.md) (standalone) |
 
 ### Chaining Logic
 
@@ -222,25 +236,25 @@ sandbox = Sandbox.create(image="python")
 ### Examples
 
 **"I want to build a new event-driven app with Kafka"**
-1. Start with **designer** → create `.do/app.yaml` with Kafka
-2. Use **managed-db-services** for Kafka-specific bindable variables
-3. Use **planner** → generate staged Plan/ files
-4. Execute with **deployment** skill
+1. Start with **[designer](skills/designer/SKILL.md)** → create `.do/app.yaml` with Kafka
+2. Use **[managed-db-services](skills/managed-db-services/SKILL.md)** for Kafka-specific bindable variables
+3. Use **[planner](skills/planner/SKILL.md)** → generate staged Plan/ files
+4. Execute with **[deployment](skills/deployment/SKILL.md)** skill
 
 **"Migrate my Heroku app to DigitalOcean"**
-1. Start with **migration** → Heroku deep chapter auto-routes based on intent (Q&A, Guided, Auto-Migrate)
+1. Start with **[migration](skills/migration/SKILL.md)** → Heroku deep chapter auto-routes based on intent (Q&A, Guided, Auto-Migrate)
 2. Parses Procfile, app.json, heroku.yml, maps add-ons, generates `.do/app.yaml`
-3. Use **planner** → plan the staged deployment
-4. Execute with **deployment** skill
+3. Use **[planner](skills/planner/SKILL.md)** → plan the staged deployment
+4. Execute with **[deployment](skills/deployment/SKILL.md)** skill
 
 **"My deployed app keeps returning 502"**
-1. Route directly to **troubleshooting** (single skill, no chaining)
+1. Route directly to **[troubleshooting](skills/troubleshooting/SKILL.md)** (single skill, no chaining)
 2. Use debug container, analyze logs, fix issue
 
 **"Add PostgreSQL to my existing app"**
-1. Use **postgres** for schema/user setup
+1. Use **[postgres](skills/postgres/SKILL.md)** for schema/user setup
 2. Update `.do/app.yaml` with database binding
-3. Redeploy with **deployment** skill
+3. Redeploy with **[deployment](skills/deployment/SKILL.md)** skill
 
 ### Key Principle
 
@@ -343,7 +357,7 @@ When a skill completes, it should:
 
 1. **State the artifact(s) produced**: "Created `.do/app.yaml` with 3-component architecture"
 2. **Indicate the file path**: Relative to project root
-3. **Suggest next skill if applicable**: "To deploy this, use the **deployment skill**"
+3. **Suggest next skill if applicable**: "To deploy this, load the **[deployment skill](skills/deployment/SKILL.md)**"
 
 ---
 
