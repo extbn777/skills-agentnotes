@@ -1,10 +1,7 @@
 ---
 name: app-platform-designer
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Transform natural language application descriptions into production-ready DigitalOcean App Platform specifications. Use when designing apps, creating app specs, generating deploy.template.yaml, or architecting multi-component applications.
-related_skills: [deployment, networking, postgres, managed-db-services]
-deprecated: false
 ---
 
 # App Platform Designer Skill
@@ -67,7 +64,7 @@ Check for:
 ├── package.json → Node.js app
 ├── requirements.txt / pyproject.toml → Python app
 ├── go.mod → Go app
-├── Multiple directories with above → Monorepo
+└── Multiple directories with above → Monorepo
 ```
 
 **Full guide:** See [component-types.md](reference/component-types.md)
@@ -336,10 +333,13 @@ doctl apps spec validate .do/deploy.template.yaml
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ deployment**: Deploy the generated app spec via GitHub Actions
-- **→ devcontainers**: Create local dev environment with prod parity
-- **→ postgres**: Advanced database configuration
-- **→ networking**: Custom domains, CORS, VPC
-- **→ migration**: Convert from other platforms
+After completing this workflow, load the skill that matches your next step:
+
+- **[deployment](../deployment/SKILL.md)** — When necesites desplegar el app spec generado via GitHub Actions
+- **[devcontainers](../devcontainers/SKILL.md)** — When necesites un entorno local que espeje la configuración de producción
+- **[postgres](../postgres/SKILL.md)** — Para configuración avanzada de base de datos: esquemas, usuarios, multi-tenant
+- **[networking](../networking/SKILL.md)** — Para dominios personalizados, CORS o configuración VPC
+- **[migration](../migration/SKILL.md)** — Si estás convirtiendo desde otra plataforma en lugar de diseñar desde cero
+- **[planner](../planner/SKILL.md)** — Para descomponer el deployment en fases escalonadas manejables
