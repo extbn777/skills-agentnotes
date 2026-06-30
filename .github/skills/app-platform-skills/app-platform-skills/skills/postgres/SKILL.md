@@ -1,10 +1,7 @@
 ---
 name: postgres
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Configure DigitalOcean Managed Postgres with bindable variables or schema isolation. Use when setting up databases, creating users, managing permissions, configuring multi-tenant schemas, or troubleshooting database connectivity on App Platform.
-related_skills: [designer, networking]
-deprecated: false
 ---
 
 # Postgres Skill
@@ -134,9 +131,10 @@ Password flows directly to GitHub Secrets — never displayed.
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ designer**: Add database block to app spec
-- **→ deployment**: GitHub Actions workflow with DATABASE_URL secret
-- **→ devcontainers**: Local Postgres with prod parity
-- **→ troubleshooting**: Debug container for connectivity testing
+- **[designer](../designer/SKILL.md)** — Para agregar el bloque de base de datos al app spec
+- **[deployment](../deployment/SKILL.md)** — Para el workflow de GitHub Actions con el secret `DATABASE_URL`
+- **[devcontainers](../devcontainers/SKILL.md)** — Para configurar PostgreSQL local con paridad de producción
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para usar el debug container en pruebas de conectividad
+- **[networking](../networking/SKILL.md)** — Para configuración VPC en acceso privado a base de datos
