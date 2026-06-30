@@ -1,10 +1,7 @@
 ---
 name: spaces
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Configure DigitalOcean Spaces (S3-compatible object storage) for App Platform apps. Use when setting up file uploads, static assets, CDN, access logging, or per-app credential management.
-related_skills: [designer]
-deprecated: false
 ---
 
 # Spaces Skill
@@ -210,8 +207,8 @@ See [troubleshooting.md](reference/troubleshooting.md) for details.
 
 ---
 
-## Integration
+## When to Load Related Skills
 
-- **→ designer**: Includes Spaces env vars when architecting apps
-- **→ deployment**: Credentials stored in GitHub Secrets
-- **→ devcontainers**: MinIO provides local Spaces parity
+- **[designer](../designer/SKILL.md)** — Incluye env vars de Spaces al diseñar el app spec
+- **[deployment](../deployment/SKILL.md)** — Las credenciales se guardan en GitHub Secrets
+- **[devcontainers](../devcontainers/SKILL.md)** — MinIO provee paridad local con Spaces para desarrollo
