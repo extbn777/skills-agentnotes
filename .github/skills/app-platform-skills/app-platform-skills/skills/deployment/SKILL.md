@@ -1,10 +1,7 @@
 ---
 name: deployment
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Deploy applications to DigitalOcean App Platform via GitHub Actions with proper environment management and secrets handling. Use when setting up CI/CD pipelines, configuring staging/production environments, managing deployment secrets, or creating GitHub Actions workflows.
-related_skills: [designer, troubleshooting]
-deprecated: false
 ---
 
 # Deployment Skill
@@ -27,7 +24,7 @@ PUSH MODE (CLI/Actions-driven) — THIS SKILL
 • Good for: CI/CD, automation, GitOps, multi-environment
 ```
 
-> **Tip**: For complex projects, consider the **planner** skill for staged approaches. See [root SKILL.md](../../SKILL.md) for all skills.
+> **Tip**: For complex projects, consider the **[planner skill](../planner/SKILL.md)** for staged approaches. See [root SKILL.md](../../SKILL.md) for all skills.
 
 ---
 
@@ -196,15 +193,6 @@ doctl apps console $APP_ID debug
 
 ---
 
-## Integration with Other Skills
-
-- **← designer**: Creates `.do/app.yaml` that deployment consumes
-- **← postgres**: Handles database setup, stores `DATABASE_URL` in GitHub Secrets
-- **→ troubleshooting**: Debug deployment failures
-- **← devcontainers**: Ensure local dev matches production
-
----
-
 ## Production Checklist
 
 - [ ] DO Projects created with environment tags
@@ -216,6 +204,16 @@ doctl apps console $APP_ID debug
 - [ ] Production protection rules enabled
 - [ ] Staging deployment tested
 - [ ] Production deployment tested
+
+---
+
+## When to Load Related Skills
+
+- **[designer](../designer/SKILL.md)** — Para crear el `.do/app.yaml` que este skill consume como entrada
+- **[postgres](../postgres/SKILL.md)** — Para setup de base de datos y gestión del `DATABASE_URL` en GitHub Secrets
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para depurar fallos de deployment después de hacer push
+- **[devcontainers](../devcontainers/SKILL.md)** — Para asegurar que el entorno local coincide con producción antes de desplegar
+- **[planner](../planner/SKILL.md)** — Para deployments complejos multi-fase con dependencias y plan escalonado
 
 ---
 
