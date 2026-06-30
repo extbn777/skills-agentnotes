@@ -1,10 +1,7 @@
 ---
 name: app-platform-networking
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Configure domains, routing, CORS, VPC, static IPs, and inter-service communication for DigitalOcean App Platform. Use when setting up custom domains, subdomain routing, cross-origin API access, or secure database connectivity.
-related_skills: [designer, postgres, managed-db-services]
-deprecated: false
 ---
 
 # App Platform Networking Skill
@@ -177,9 +174,10 @@ doctl databases connection --private <cluster-id> --format URI
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ designer**: Add domains/ingress to app spec
-- **→ troubleshooting**: Debug DNS, CORS, VPC issues
-- **→ postgres**: VPC connectivity for managed databases
-- **→ deployment**: Deploy networking changes
+- **[designer](../designer/SKILL.md)** — Agrega domains/ingress al app spec
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para depurar problemas de DNS, CORS o VPC
+- **[postgres](../postgres/SKILL.md)** — Conectividad VPC para bases de datos gestionadas
+- **[deployment](../deployment/SKILL.md)** — Desplegar cambios de networking via GitHub Actions
+- **[managed-db-services](../managed-db-services/SKILL.md)** — Trusted sources y VPC para MySQL, Kafka, OpenSearch
