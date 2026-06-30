@@ -1,10 +1,7 @@
 ---
 name: app-platform-troubleshooting
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Debug running App Platform applications by accessing containers, analyzing logs, running diagnostics, and applying fixes. Use when apps fail to deploy, crash at runtime, have connectivity issues, or need performance diagnosis.
-related_skills: [deployment, networking, postgres]
-deprecated: false
 ---
 
 # App Platform Troubleshooting Skill
@@ -147,9 +144,9 @@ doctl apps spec get <app_id> > app_spec.yaml
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ deployment**: After fixing, deploy proper changes
-- **→ devcontainers**: Reproduce issues locally
-- **→ postgres**: Database-specific configuration
-- **→ networking**: Comprehensive networking docs
+- **[deployment](../deployment/SKILL.md)** — Después de diagnosticar, desplegar los cambios corregidos
+- **[devcontainers](../devcontainers/SKILL.md)** — Reproducir problemas localmente antes de hacer push
+- **[postgres](../postgres/SKILL.md)** — Para configuración específica de base de datos
+- **[networking](../networking/SKILL.md)** — Para documentación completa de networking y VPC
