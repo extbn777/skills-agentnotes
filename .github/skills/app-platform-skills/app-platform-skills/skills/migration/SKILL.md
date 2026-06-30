@@ -1,10 +1,7 @@
 ---
 name: app-platform-migration
 version: 1.0.0
-min_doctl_version: "1.82.0"
 description: Migrate applications from Heroku, AWS, Render, Railway, Fly.io, or Docker Compose to DigitalOcean App Platform. Use when converting existing apps, mapping services, refactoring platform-specific code, or creating app specs from other platform configurations.
-related_skills: [designer, postgres, managed-db-services, networking, deployment]
-deprecated: false
 ---
 
 # App Platform Migration Skill
@@ -21,7 +18,7 @@ This skill is an honest partner, not a magic wand. It:
 4. **Asks before proceeding** when uncertain
 5. **Never guesses** or ignores incompatibilities
 
-> **Tip**: For complex multi-step migrations, use the **planner** skill first. For all available skills, see [root SKILL.md](../../SKILL.md).
+> **Tip**: For complex multi-step migrations, use the **[planner skill](../planner/SKILL.md)** first. For all available skills, see [root SKILL.md](../../SKILL.md).
 
 ---
 
@@ -230,12 +227,14 @@ For Heroku-specific migrations, a comprehensive chapter is available with deep k
 
 ---
 
-## Integration with Other Skills
+## When to Load Related Skills
 
-- **→ deployment**: GitHub Actions workflow after migration
-- **→ postgres**: Complex database setup, schema isolation
-- **→ devcontainers**: Local dev environment post-migration
-- **→ troubleshooting**: Debug container for migration issues
+- **[deployment](../deployment/SKILL.md)** — Para configurar el flujo CI/CD con GitHub Actions después de completar la migración
+- **[postgres](../postgres/SKILL.md)** — Para configuración avanzada de base de datos y schema isolation
+- **[devcontainers](../devcontainers/SKILL.md)** — Para crear un entorno local post-migración con paridad de producción
+- **[troubleshooting](../troubleshooting/SKILL.md)** — Para usar el debug container ante problemas durante la migración
+- **[planner](../planner/SKILL.md)** — Para migraciones complejas multi-fase con plan escalonado y dependencias
+- **[networking](../networking/SKILL.md)** — Para configurar dominios, CORS o VPC después de migrar
 
 ---
 
